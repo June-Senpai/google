@@ -10,7 +10,7 @@ export default function Search() {
         height={92}
         className="h-full"
       />
-      <div className="group flex items-center mt-4 w-full max-w-md bg-[#202124] border-[#5f6368] border-2 p-2 rounded-3xl hover:bg-[#303134] hover:border-[#303134] ">
+      <div className="group/search flex items-center mt-4 w-full max-w-xl bg-[#202124] border-[#5f6368] border-2 p-2 rounded-3xl hover:bg-[#303134] hover:border-[#303134] ">
         {/* search icon */}
         <svg
           focusable="false"
@@ -25,64 +25,52 @@ export default function Search() {
         </svg>
         <input
           type="text"
-          className=" w-full bg-[#202124] focus:outline-none ml-4 group-hover:bg-[#303134] "
+          className=" w-full bg-[#202124] focus:outline-none ml-4 group-hover/search:bg-[#303134] "
         />
         {/* Mic icon */}
-        <div className="flex gap-3">
-          <div className="  relative">
-            <svg
-              class="goxjub"
-              focusable="false"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 cursor-pointer  "
-            >
-              <path
-                fill="#4285f4"
-                d="m12 15c1.66 0 3-1.31 3-2.97v-7.02c0-1.66-1.34-3.01-3-3.01s-3 1.34-3 3.01v7.02c0 1.66 1.34 2.97 3 2.97z"
-              ></path>
-              <path fill="#34a853" d="m11 18.08h2v3.92h-2z"></path>
-              <path
-                fill="#fbbc04"
-                d="m7.05 16.87c-1.27-1.33-2.05-2.83-2.05-4.87h2c0 1.45 0.56 2.42 1.47 3.38v0.32l-1.15 1.18z"
-              ></path>
-              <path
-                fill="#ea4335"
-                d="m12 16.93a4.97 5.25 0 0 1 -3.54 -1.55l-1.41 1.49c1.26 1.34 3.02 2.13 4.95 2.13 3.87 0 6.99-2.92 6.99-7h-1.99c0 2.92-2.24 4.93-5 4.93z"
-              ></path>
-            </svg>
-            <span className="absolute text-sm bg-black w-28 mt-3 -ml-12 ">
-              Search by voice
-            </span>
+        <div className="flex gap-3 items-center">
+          <div className="group/icon relative">
+            <Image
+              src="/mic.png"
+              width={40}
+              height={40}
+              alt=""
+              className="cursor-pointer  "
+            />
+
+            <IconHoverText text="Search by voice" />
           </div>
           {/* Camera icon */}
-          <svg
-            class="Gdd5U"
-            focusable="false"
-            viewBox="0 0 192 192"
-            className="h-6 w-6 mr-1"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect fill="none" height="192" width="192"></rect>
-            <g>
-              <circle fill="#34a853" cx="144.07" cy="144" r="16"></circle>
-              <circle fill="#4285f4" cx="96.07" cy="104" r="24"></circle>
-              <path
-                fill="#ea4335"
-                d="M24,135.2c0,18.11,14.69,32.8,32.8,32.8H96v-16l-40.1-0.1c-8.8,0-15.9-8.19-15.9-17.9v-18H24V135.2z"
-              ></path>
-              <path
-                fill="#fbbc04"
-                d="M168,72.8c0-18.11-14.69-32.8-32.8-32.8H116l20,16c8.8,0,16,8.29,16,18v30h16V72.8z"
-              ></path>
-              <path
-                fill="#4285f4"
-                d="M112,24l-32,0L68,40H56.8C38.69,40,24,54.69,24,72.8V92h16V74c0-9.71,7.2-18,16-18h80L112,24z"
-              ></path>
-            </g>
-          </svg>
+          <div className="group/icon relative">
+            <Image
+              src="/camera.png"
+              width={40}
+              height={40}
+              alt=""
+              className="cursor-pointer"
+            />
+            <IconHoverText text="Search by image" />
+          </div>
         </div>
       </div>
     </main>
+  )
+}
+
+function IconHoverText({ text }) {
+  return (
+    <div className="">
+      <span
+        className="h-0 w-0 absolute border-8 ml-2 z-30 -mt-[2px] border-solid border-l-transparent
+border-r-transparent border-t-transparent opacity-0 group-hover/icon:opacity-100 border-[#202124] "
+      ></span>
+      <span
+        className="h-0 w-0 absolute border-8 ml-2 z-0 -mt-[4px] border-solid border-l-transparent
+  border-r-transparent border-t-transparent opacity-0 group-hover/icon:opacity-100 border-[#5f6368] "
+      ></span>
+      <span className="absolute text-sm bg-[#202124] z-20 border w-32 h-8 flex items-center justify-center text-gray-400 mt-3 -ml-12 opacity-0 group-hover/icon:opacity-100 border-[#5f6368] ">
+        {text}
+      </span>
+    </div>
   )
 }
