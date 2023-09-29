@@ -1,6 +1,14 @@
+"use client"
+import { useState } from "react"
 import Image from "next/image"
 
 export default function Search() {
+  const [isExpanded, setIsExpanded] = useState(false)
+
+  function expandSearchBar() {
+    setIsExpanded(!isExpanded)
+  }
+
   return (
     <main className="flex flex-col items-center justify-center mt-32 px-4 sm:px-0">
       <Image
@@ -10,13 +18,16 @@ export default function Search() {
         height={92}
         className="h-full"
       />
-      <div className="group/search flex items-center mt-4 w-full max-w-xl bg-[#202124] border-[#5f6368] border-2 p-2 rounded-3xl hover:bg-[#303134] hover:border-[#303134] ">
+      <div
+        onClick={expandSearchBar}
+        className={`group/search flex items-center mt-4 w-full max-w-xl bg-[#202124] border-[#5f6368] border-2 p-2 rounded-3xl hover:bg-[#303134] hover:border-[#303134] focus-within:border-[#303134] focus-within:bg-[#303134] `}
+      >
         {/* search icon */}
         <svg
           focusable="false"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
-          className="h-6 w-6  "
+          className="h-6 w-6 ml-1"
         >
           <path
             fill="#9aa0a6"
@@ -25,7 +36,7 @@ export default function Search() {
         </svg>
         <input
           type="text"
-          className=" w-full bg-[#202124] focus:outline-none ml-4 group-hover/search:bg-[#303134] "
+          className={` focus:bg-[#303134] w-full bg-[#202124] focus:outline-none ml-4 group-hover/search:bg-[#303134] `}
         />
         {/* Mic icon */}
         <div className="flex gap-3 items-center">
@@ -73,4 +84,8 @@ border-r-transparent border-t-transparent opacity-0 group-hover/icon:opacity-100
       </span>
     </div>
   )
+}
+
+function TrendingSearch() {
+  return <div className=""></div>
 }
