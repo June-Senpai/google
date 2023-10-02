@@ -4,6 +4,7 @@
 
 :root {
   --fill-color: black; /* Light theme */
+  --fill-drive: #202124; /* google drive */
 }
 
 body {
